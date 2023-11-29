@@ -19,7 +19,7 @@ function LoginScreen() {
   }, []);
   const onChangePw = useCallback((text: string) => {
     setPw(text.trim());
-  }, [])
+  }, []);
   const idRef = useRef<TextInput | null>(null);
   const pwRef = useRef<TextInput | null>(null);
   return (
@@ -43,7 +43,7 @@ function LoginScreen() {
         />
       </View>
 
-      <View style={{justifyContent :"center", alignItems : "center", marginTop:24}}>
+      <View style={{ justifyContent: "center", alignItems: "center", marginTop: 24 }}>
         <TextInput
           style={styles.loginTextInputStyle}
           placeholder="아이디"
@@ -99,11 +99,7 @@ function LoginScreen() {
 const styles = StyleSheet.create({
   safeAreaStyle: {
     flex: 1
-    //justifyContent: "center", // 변경된 부분
-    //alignItems : "center",
-
   },
-
   TextImageRowView: {
     justifyContent: "space-between",
     flexDirection: "row",
@@ -112,13 +108,10 @@ const styles = StyleSheet.create({
     marginTop: 40
   },
   imgStyle: {
-    //borderRadius: Dimensions.get("window").width * 0.15, // 둥근 모양을 위한 값, 값은 조절 가능
     width: 180, // 이미지 너비, 값은 조절 가능
     height: 160, // 이미지 높이, 값은 조절 가능
     resizeMode: "cover", // 이미지가 너비와 높이에 맞게 조절되도록
     overflow: "hidden" // 이미지가 부모 컨테이너를 벗어나지 않도록
-    //alignItems: "center",
-    //marginTop : 24
   },
   titleTextStyle: {
     color: SemiBlack,
@@ -129,8 +122,6 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   loginTextInputStyle: {
-
-    //width: Dimensions.get('window')
     justifyContent: "center",
     borderWidth: 1,
     borderColor: "grey",
@@ -140,15 +131,6 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 18,
     marginBottom: 24
-    //backgroundColor: "white",
-    // shadowColor: '#000',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 1,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 1.5,
-    // elevation: 2.5,
   },
 
   helpViewStyle: {
@@ -162,42 +144,28 @@ const styles = StyleSheet.create({
   },
   bottomImgStyle: {
     marginTop: 16,
-    //borderRadius: Dimensions.get("window").width * 0.15, // 둥근 모양을 위한 값, 값은 조절 가능
     width: 160, // 이미지 너비, 값은 조절 가능
-    //height: 160, // 이미지 높이, 값은 조절 가능
     resizeMode: "cover", // 이미지가 너비와 높이에 맞게 조절되도록
     overflow: "hidden" // 이미지가 부모 컨테이너를 벗어나지 않도록
-    //alignItems: "center",
-
   },
-
   btnStyle: {
     position: "absolute",
     justifyContent: "center",
     height: 56,
     backgroundColor: PrimaryColor,
-    //borderWidth: 1,
     borderRadius: 12,
     borderColor: Colors.black,
-    //marginHorizontal: 32,
     alignItems: "center",
     bottom: 44,
     left: 16,
     right: 16
-
-
   },
-
   btnTextStyle: {
     fontSize: 20,
     color: Colors.white,
     fontWeight: "bold",
     alignItems: "center"
-
-
   }
 });
-
-
 export default LoginScreen;
 
