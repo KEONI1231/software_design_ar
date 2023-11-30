@@ -3,7 +3,10 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-
+import  Ionicons  from "react-native-vector-icons/Ionicons";
+import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+Ionicons.loadFont();
+MaterialIcon.loadFont();
 // 1. Stack의 타입을 정의합니다.
 type RootStackParamList = {
   IntroScreen : undefined
@@ -16,13 +19,15 @@ type Props = {
   navigation: HomeScreenNavigationProp;
 };
 
-function HomeScreen({ navigation }: Props) {
+function MainScreen({ navigation }: Props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text>Main Screen</Text>
+      <Ionicons name={"bag-outline"} size = {32} color = "black"></Ionicons>
+      <MaterialIcon name={"file-edit-outline"} size = {32} color = "black"></MaterialIcon>
       <Button title="Go to Intro" onPress={() => navigation.navigate('IntroScreen')} />
     </View>
   );
 }
 
-export default HomeScreen;
+export default MainScreen;

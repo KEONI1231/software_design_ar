@@ -79,7 +79,6 @@ function LoginScreen() {
           계정을 잊으셨나요?
         </Text>
       </View>
-
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <Image
           style={styles.bottomImgStyle}
