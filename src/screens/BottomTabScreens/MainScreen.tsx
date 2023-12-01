@@ -21,7 +21,7 @@ type Props = {
 
 function MainScreen({ navigation }: Props) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, backgroundColor : 'white',justifyContent: 'center', alignItems: 'center' }}>
       <Text>Main Screen</Text>
       <Ionicons name={"bag-outline"} size = {32} color = "black"></Ionicons>
       <MaterialIcon name={"file-edit-outline"} size = {32} color = "black"></MaterialIcon>

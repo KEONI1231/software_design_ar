@@ -6,9 +6,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  self.window.backgroundColor = [UIColor whiteColor]; // 배경색을 하얀색으로 설정
+
   self.moduleName = @"ar_prototype";
-  // You can add your custom initial props in the dictionary below.
-  // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];

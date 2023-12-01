@@ -39,7 +39,7 @@ function LoginScreen() {
 
         <Image
           style={styles.imgStyle}
-          source={require("../../../assets/SplashScreen.png")}
+          source={require("../../../assets/Splash.png")}
         />
       </View>
 
@@ -97,7 +97,8 @@ function LoginScreen() {
 
 const styles = StyleSheet.create({
   safeAreaStyle: {
-    flex: 1
+    flex: 1,
+    backgroundColor : 'white'
   },
   TextImageRowView: {
     justifyContent: "space-between",

@@ -13,13 +13,14 @@ import { RootStackParamList } from "../Components/navigators/types";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import Image = Animated.Image;
 import { useNavigation } from "@react-navigation/native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 //import {BaseUrl} from '../Consts/EndPoints';
 
 type RootStackNavigatorProp = StackNavigationProp<RootStackParamList>;
 
 const PrimaryColor = "#309582";
 const SemiBlack = "#262626";
-
+Ionicons.loadFont();
 function IntroScreen() {
   //console.log(BaseUrl);
   const navigation = useNavigation<RootStackNavigatorProp>();
@@ -31,7 +32,7 @@ function IntroScreen() {
         <View style={styles.imgView}>
           <Image
             style={styles.imgStyle}
-            source={require("../../assets/SplashScreen.png")}
+            source={require("../../assets/Splash.png")}
           />
         </View>
         {/*<View style={{ alignItems: "center", marginVertical: 32 }}>*/}
@@ -56,6 +57,7 @@ function IntroScreen() {
 
 const styles = StyleSheet.create({
   safeAreaStyle: {
+    backgroundColor : "white",
     flex: 1,
     justifyContent: "center", // 변경된 부분
     paddingHorizontal: 12

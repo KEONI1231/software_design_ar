@@ -1,10 +1,9 @@
-import React from 'react'
-import { Animated, Button, Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Animated, Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Components/navigators/types";
 import { useNavigation } from "@react-navigation/native";
 import Image = Animated.Image;
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
 const PrimaryColor = "#309582";
@@ -15,14 +14,14 @@ type IntroScreenNavigationProp = StackNavigationProp<
 >;
 
 function SubjectSelectScreen() {
-  const navigation = useNavigation<IntroScreenNavigationProp>()
+  const navigation = useNavigation<IntroScreenNavigationProp>();
   return (
     <View style={styles.safeAreaStyle}>
 
       <View style={styles.imgView}>
         <Image
           style={styles.imgStyle}
-          source={require("../../../assets/SplashScreen.png")}
+          source={require("../../../assets/Splash.png")}
         />
       </View>
 
@@ -41,7 +40,7 @@ function SubjectSelectScreen() {
         <Text style={styles.contentText}>사칙연산의 세상으로 Jump!</Text>
       </View>
 
-      <View style={{...styles.containerView, marginTop : 20}}>
+      <View style={{ ...styles.containerView, marginTop: 20 }}>
         <View style={styles.containerInnerView}>
           <Text style={styles.titleText}>영단어</Text>
           <TouchableOpacity
@@ -56,14 +55,14 @@ function SubjectSelectScreen() {
         <Text style={styles.contentText}>영단어 세상으로 Jump!</Text>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  safeAreaStyle : {
-    flex : 1,
-
-    alignItems : "center"
+  safeAreaStyle: {
+    flex: 1,
+    backgroundColor: "white",
+    alignItems: "center"
   },
   imgView: {
     //alignItems: "center",
@@ -76,59 +75,59 @@ const styles = StyleSheet.create({
     resizeMode: "contain", // 이미지가 너비와 높이에 맞게 조절되도록
     //overflow: "hidden", // 이미지가 부모 컨테이너를 벗어나지 않도록
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
 
   },
-  containerView : {
-    justifyContent : "center",
-    paddingLeft : 16,
-    paddingRight : 16,
-    width : Dimensions.get("window").width - 24,
-    borderRadius : 12,
-    height : 132,
-    marginTop : -10,
+  containerView: {
+    justifyContent: "center",
+    paddingLeft: 16,
+    paddingRight: 16,
+    width: Dimensions.get("window").width - 24,
+    borderRadius: 12,
+    height: 132,
+    marginTop: -10,
     //marginBottom: 32,
-    backgroundColor : '#f0f0f0',
+    backgroundColor: "white",
 
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 5
     },
     shadowOpacity: 0.25,
     shadowRadius: 2,
-    elevation: 1,
+    elevation: 1
   },
-  containerInnerView : {
-    flexDirection : 'row',
-    justifyContent : "space-between",
-    marginTop : 0
+  containerInnerView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 0
   },
 
-  titleText : {
-    color : PrimaryColor,
-    fontWeight : "bold",
-    fontSize : 20,
+  titleText: {
+    color: PrimaryColor,
+    fontWeight: "bold",
+    fontSize: 20
   },
-  contentText : {
-    color : 'grey',
-    fontSize : 14,
+  contentText: {
+    color: "grey",
+    fontSize: 14
   },
   btnStyle: {
     justifyContent: "center",
     height: 36,
     backgroundColor: PrimaryColor,
     borderRadius: 12,
-    width : 100,
-    alignItems: "center",
+    width: 100,
+    alignItems: "center"
   },
   btnTextStyle: {
     fontSize: 14,
     color: "white",
     fontWeight: "bold",
-    alignItems:"center",
+    alignItems: "center"
 
 
   }
-})
+});
 export default SubjectSelectScreen;

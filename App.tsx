@@ -10,6 +10,7 @@ import SplashScreen from "react-native-splash-screen";
 
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./src/Components/navigators/AppNavigator";
+import { StyleSheet, View } from "react-native";
 
 function App(): JSX.Element {
   useEffect(() => {
@@ -18,12 +19,13 @@ function App(): JSX.Element {
     }, 500); //스플래시 활성화 시간
   });
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+
   );
 
 }
-
 
 export default App;

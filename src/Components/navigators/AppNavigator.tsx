@@ -11,7 +11,12 @@ const RootStack = createStackNavigator();
 
 function AppNavigator() {
   return (
-    <RootStack.Navigator initialRouteName="Intro">
+    <RootStack.Navigator initialRouteName="IntroScreen"
+      screenOptions={{
+        headerBackgroundContainerStyle : {
+          backgroundColor : 'white'
+      }}}
+    >
       <RootStack.Screen name="IntroScreen" component={IntroScreen} options={{headerShown : false}} />
       <RootStack.Screen name="MainScreen" component={MainTabNavigator} options={{ headerShown: false }} />
       <RootStack.Screen name="DetailsScreen" component={DetailScreen} options={{ headerShown: false }} />
