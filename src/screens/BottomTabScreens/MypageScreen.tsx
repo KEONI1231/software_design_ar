@@ -67,8 +67,67 @@ function MyPageScreen() {
 
         <View style={{...styles.containerViewStyle, marginTop : 48}}>
           <Text style={styles.menuTextStyle}>계정 관리</Text>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"at-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>ID 변경하기</Text>
+            </View>
+            <Text style={{...styles.menuContentTextStyle, color : 'grey'}}>kh991231@naver.com</Text>
+          </View>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"happy-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>비밀번호 변경하기</Text>
+            </View>
 
+          </View>
         </View>
+
+        <View style={{...styles.containerViewStyle,height: 280, marginTop : 48,marginBottom:48}}>
+          <Text style={styles.menuTextStyle}>기타</Text>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"megaphone-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>공지사항</Text>
+            </View>
+
+          </View>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"exit-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>로그아웃</Text>
+            </View>
+          </View>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"trash-bin-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>탈퇴하기</Text>
+            </View>
+          </View>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"headset-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>문의하기</Text>
+            </View>
+          </View>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"extension-puzzle-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>최신버전</Text>
+              <Text style={{...styles.menuContentTextStyle, fontSize : 13, color:"grey"}}>현재(1.0.0)</Text>
+            </View>
+            <Text style={{...styles.menuContentTextStyle,fontSize:13,color:"#6499E9"}}>최신버전 (1.0.0)</Text>
+          </View>
+          <View style={styles.menuContentInnerView}>
+            <View style={styles.contentInnerSubTitleView}>
+              <Ionicons name={"reader-outline"} size={20} color={SemiBlack}></Ionicons>
+              <Text style={styles.menuContentTextStyle}>서비스 이용약관</Text>
+
+            </View>
+
+          </View>
+        </View>
+
 
       </View>
     </ScrollView>
@@ -119,16 +178,16 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 8
+      height: 2.5
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
     elevation: 1,
     backgroundColor: "white"
   },
   cotainerInnerView: {
-    fontSize: 12,
     flexDirection: "column",
+
     justifyContent: "space-between",
     marginBottom: 8,
     alignItems: "center"
@@ -194,6 +253,24 @@ const styles = StyleSheet.create({
     fontSize : 16,
     fontColor : 'black',
     fontWeight : "bold"
+  },
+  menuContentInnerView : {
+    flexDirection : 'row',
+    justifyContent:'space-between',
+    alignItems : 'center',
+    marginTop:16,
+  },
+  menuContentTextStyle : {
+    fontSize : 16,
+    color : "black",
+    marginLeft:8,
+    alignItems:'center',
+
+  },
+  contentInnerSubTitleView : {
+    flexDirection : 'row',
+    alignItems : 'center',
+    color : "black",
   }
 });
 export default MyPageScreen;
