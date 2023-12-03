@@ -61,8 +61,9 @@ function LoginScreen() {
           style={styles.loginTextInputStyle}
           placeholder="비밀번호"
           placeholderTextColor={"gray"}
-          textContentType="emailAddress"
+          textContentType="password"
           value={pw}
+          secureTextEntry
           onChangeText={onChangePw}
           ///onSubmitEditing={}
           ref={pwRef}

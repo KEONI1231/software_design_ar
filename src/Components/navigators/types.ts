@@ -3,6 +3,7 @@ export type RootStackParamList = {
   MainScreen : undefined;
   DetailsScreen: undefined;
   LoginScreen : undefined;
+  MathSubjectScreen : undefined
   // HomeScreen: undefined;
   // SettingScreen  : undefined;
   // ChattingListScreen : undefined;

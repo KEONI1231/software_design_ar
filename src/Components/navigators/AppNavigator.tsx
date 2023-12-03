@@ -6,6 +6,8 @@ import IntroScreen from "../../screens/IntroScreen";
 import MainTabNavigator from "./TabNavigator";
 import DetailScreen from "../../screens/DetailScreen";
 import LoginScreen from "../../screens/AuthScreens/LoginScreen";
+import MathSubject from "../../screens/SubjectScreen/MathSubject";
+import MathSubjectScreen from "../../screens/SubjectScreen/MathSubject";
 
 const PrimaryColor = "#309582";
 const RootStack = createStackNavigator();
@@ -39,6 +41,7 @@ function AppNavigator() {
                           headerTintColor: PrimaryColor
 
                         }} />
+      <RootStack.Screen name="MathSubjectScreen" component={MathSubjectScreen} options={{ headerShown: false }} />
     </RootStack.Navigator>
   );
 }

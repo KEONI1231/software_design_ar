@@ -1,7 +1,7 @@
 // screens/HomeScreen.tsx
 
-import React from "react";
-import { View, Text, Button, StyleSheet, Dimensions, Animated, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Button, StyleSheet, Dimensions, Animated, ScrollView, ActivityIndicator } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Components/navigators/types";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
@@ -40,7 +40,7 @@ function RangkingCard({ rankInfo }: RankingCardProps) {
       ...styles.RankCardViewStyle,
       marginRight: 6,
       borderTopWidth: 1,
-      marginBottom : 32
+      marginBottom: 32
 
     } : { ...styles.RankCardViewStyle, marginRight: 6 }}>
       {/*<Image*/}
@@ -51,8 +51,13 @@ function RangkingCard({ rankInfo }: RankingCardProps) {
         <Text style={{ marginRight: 8, fontSize: 20, marginLeft: 14, color: PrimaryColor }}>{rankInfo.rank}</Text>
         <Text style={styles.rankCardTextStyle}>{rankInfo.Name}</Text>
       </View>
-      <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
-
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Image
+          style={styles.imgStyle1}
+          source={rankInfo.rank == 8 || rankInfo.rank == 9 || rankInfo.rank == 10 ? require("../../../assets/Platinum_810x.webp") : rankInfo.rank == 190 ? require("../../../assets/GoldIcon.png") : require("../../../assets/Diamond.webp")}
+        />
+        <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
+      </View>
     </View>
   );
 }
@@ -71,8 +76,13 @@ function FirstRankCard({ rankInfo }: RankingCardProps) {
         />
         <Text style={styles.rankCardTextStyle}>{rankInfo.Name}</Text>
       </View>
-      <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
-
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Image
+          style={styles.imgStyle1}
+          source={require("../../../assets/Diamond.webp")}
+        />
+        <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
+      </View>
     </View>
   );
 }
@@ -91,8 +101,13 @@ function SecondRankCard({ rankInfo }: RankingCardProps) {
         />
         <Text style={styles.rankCardTextStyle}>{rankInfo.Name}</Text>
       </View>
-      <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
-
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Image
+          style={styles.imgStyle1}
+          source={require("../../../assets/Diamond.webp")}
+        />
+        <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
+      </View>
     </View>
   );
 }
@@ -111,35 +126,58 @@ function ThirdRankCard({ rankInfo }: RankingCardProps) {
         />
         <Text style={styles.rankCardTextStyle}>{rankInfo.Name}</Text>
       </View>
-      <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
-
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Image
+          style={styles.imgStyle1}
+          source={require("../../../assets/Diamond.webp")}
+        />
+        <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>{rankInfo.Score}점</Text>
+      </View>
     </View>
   );
 }
 
 function RankingScreen() {
   const navigation = useNavigation<SettingsScreenNavigationProp>();
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // 1초 후에 로딩 상태를 false로 변경
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    // 컴포넌트가 언마운트될 때 타이머 제거
+    return () => clearTimeout(timer);
+  }, []);
+  if (isLoading) {
+    // 로딩 인디케이터 표시
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
   const namedRanks = [
-    { Name: "토끼부리미", Score: 96, rank: 1 },
-    { Name: "달님", Score: 76, rank: 2 },
-    { Name: "우주하마", Score: 100, rank: 3 }
+    { Name: "토끼부리미", Score: 999, rank: 1 },
+    { Name: "달님", Score: 996, rank: 2 },
+    { Name: "우주하마", Score: 980, rank: 3 }
   ];
   const exampleRanks = [
-    { Name: "목도림돔아뱀", Score: 96, rank: 1 },
-    { Name: "해적왕", Score: 76, rank: 2 },
-    { Name: "공주별", Score: 100, rank: 3 },
-    { Name: "료이키텐카이", Score: 82, rank: 4 },
-    { Name: "닌자거북이등껍질", Score: 65, rank: 5 },
-    { Name: "이웃집또털어", Score: 80, rank: 6 },
-    { Name: "우주로간개미핥기", Score: 19, rank: 7 },
-    { Name: "할부로애틋하게", Score: 65, rank: 8 },
-    { Name: "생갈치1호의행방불명", Score: 80, rank: 9 },
-    { Name: "카드값줘체리", Score: 19, rank: 10 }
+    { Name: "목도림돔아뱀", Score: 959, rank: 1 },
+    { Name: "해적왕", Score: 943, rank: 2 },
+    { Name: "공주별", Score: 881, rank: 3 },
+    { Name: "료이키텐카이", Score: 860, rank: 4 },
+    { Name: "닌자거북이등껍질", Score: 840, rank: 5 },
+    { Name: "이웃집또털어", Score: 821, rank: 6 },
+    { Name: "우주로간개미핥기", Score: 810, rank: 7 },
+    { Name: "할부로애틋하게", Score: 807, rank: 8 },
+    { Name: "생갈치1호의행방불명", Score: 803, rank: 9 },
+    { Name: "카드값줘체리", Score: 801, rank: 10 }
 
   ];
   const myRank = [
-    { Name: "로블록스존잼", Score: 96, rank: 190 }
+    { Name: "로블록스 존잼", Score: 572, rank: 190 }
 
   ];
   return (
@@ -187,8 +225,25 @@ const styles = StyleSheet.create({
   },
 
   imgStyle: {
+
     //borderRadius: Dimensions.get("window").width * 0.15, // 둥근 모양을 위한 값, 값은 조절 가능
     width: 30, // 이미지 너비, 값은 조절 가능
+    height: 30, // 이미지 너비, 값은 조절 가능
+    //height: Dimensions.get("window").width * 0.8, // 이미지 높이, 값은 조절 가능
+    resizeMode: "contain", // 이미지가 너비와 높이에 맞게 조절되도록
+    //overflow: "hidden", // 이미지가 부모 컨테이너를 벗어나지 않도록
+    alignItems: "center",
+
+    justifyContent: "flex-start",
+    marginLeft: 4
+
+  },
+  imgStyle1: {
+
+    marginRight: 8,
+    //borderRadius: Dimensions.get("window").width * 0.15, // 둥근 모양을 위한 값, 값은 조절 가능
+    width: 30, // 이미지 너비, 값은 조절 가능
+    height: 30, // 이미지 너비, 값은 조절 가능
     //height: Dimensions.get("window").width * 0.8, // 이미지 높이, 값은 조절 가능
     resizeMode: "contain", // 이미지가 너비와 높이에 맞게 조절되도록
     //overflow: "hidden", // 이미지가 부모 컨테이너를 벗어나지 않도록

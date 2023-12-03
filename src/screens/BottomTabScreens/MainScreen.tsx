@@ -1,7 +1,17 @@
 // screens/HomeScreen.tsx
 
-import React from "react";
-import { View, Text, Button, StyleSheet, Animated, Dimensions, TouchableOpacity, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Animated,
+  Dimensions,
+  TouchableOpacity,
+  ScrollView,
+  ActivityIndicator
+} from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -74,7 +84,7 @@ function FailProblem3() {
       marginTop: 0
 
     }}>
-      <Text style={{ marginRight: 8, fontSize: 12, marginLeft: 14, fontWeight: "bold", color: SemiBlack }}>사칙연산</Text>
+      <Text style={{ marginRight: 8, fontSize: 12, marginLeft: 14, fontWeight: "bold", color: SemiBlack }}>영단어</Text>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text style={cardStyles.textStyle}>사과 : </Text>
         <Text style={cardStyles.alphbetRec}></Text>
@@ -129,15 +139,34 @@ function RangkingCard() {
     }}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text style={{ marginRight: 8, fontSize: 20, marginLeft: 14, color: PrimaryColor }}>190</Text>
-        <Text style={styles.rankCardTextStyle}>로블록스 존잼 님</Text>
+        <Text style={styles.rankCardTextStyle}>로블록스 존잼님</Text>
       </View>
-      <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>12점</Text>
+      <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>572점</Text>
 
     </View>
   );
 }
 
 function MainScreen() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // 1초 후에 로딩 상태를 false로 변경
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    // 컴포넌트가 언마운트될 때 타이머 제거
+    return () => clearTimeout(timer);
+  }, []);
+  if (isLoading) {
+    // 로딩 인디케이터 표시
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
   const namedRanks = [
     { Name: "사칙연산", Score: 96, rank: "Tier" },
     { Name: "사칙연산", Score: 76, rank: 2 },
@@ -155,7 +184,7 @@ function MainScreen() {
             source={require("../../../assets/GoldMedal.png")}
           />
           <View style={styles.titleInnerViewStyle}>
-            <Text style={styles.titleTextStyle}>로블록스존잼 님</Text>
+            <Text style={{...styles.titleTextStyle, marginLeft :0}}>로블록스 존잼님</Text>
             <Text style={styles.subTitleTextStyle}>골드</Text>
           </View>
         </View>
@@ -182,9 +211,7 @@ function MainScreen() {
         <FailProblem3></FailProblem3>
 
         <View style={styles.titleViewStyle}>
-          <Text style={styles.titleTextStyle}>
-            로블록스 존잼님
-          </Text>
+          <Text style={styles.titleTextStyle}>로블록스 존잼님</Text>
         </View>
 
         <View style={styles.containerViewStyle}>

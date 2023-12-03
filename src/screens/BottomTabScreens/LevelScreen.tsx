@@ -1,5 +1,15 @@
-import React, { useRef } from "react";
-import { Button, Dimensions, StyleSheet, Text, View, Animated, TouchableOpacity, ScrollView } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Button,
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  TouchableOpacity,
+  ScrollView,
+  ActivityIndicator
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Components/navigators/types";
@@ -14,7 +24,25 @@ const PrimaryColor = "#309582";
 
 
 function LevelScreen() {
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // 1초 후에 로딩 상태를 false로 변경
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    // 컴포넌트가 언마운트될 때 타이머 제거
+    return () => clearTimeout(timer);
+  }, []);
+  if (isLoading) {
+    // 로딩 인디케이터 표시
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
   const navigation = useNavigation<IntroScreenNavigatorProp>();
   return (
     <ScrollView>

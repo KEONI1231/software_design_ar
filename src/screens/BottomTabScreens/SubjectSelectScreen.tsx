@@ -9,12 +9,12 @@ import Image = Animated.Image;
 const PrimaryColor = "#309582";
 const SemiBlack = "#262626";
 
-type IntroScreenNavigationProp = StackNavigationProp<
+type MathSubjectScreenNavigationProp = StackNavigationProp<
   RootStackParamList
 >;
 
 function SubjectSelectScreen() {
-  const navigation = useNavigation<IntroScreenNavigationProp>();
+  const navigation = useNavigation<MathSubjectScreenNavigationProp>();
   return (
     <View style={styles.safeAreaStyle}>
 
@@ -31,7 +31,7 @@ function SubjectSelectScreen() {
           <TouchableOpacity
             style={styles.btnStyle}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate("LoginScreen")}>
+            onPress={() => navigation.navigate("MathSubjectScreen")}>
             <Text style={styles.btnTextStyle}>시작하기</Text>
           </TouchableOpacity>
         </View>
@@ -46,7 +46,7 @@ function SubjectSelectScreen() {
           <TouchableOpacity
             style={styles.btnStyle}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate("LoginScreen")}>
+            onPress={() => navigation.navigate("MathSubjectScreen")}>
             <Text style={styles.btnTextStyle}>시작하기</Text>
           </TouchableOpacity>
         </View>
