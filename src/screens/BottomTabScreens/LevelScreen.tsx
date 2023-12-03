@@ -12,6 +12,7 @@ type IntroScreenNavigatorProp = StackNavigationProp<RootStackParamList>
 const SemiBlack = "#262626";
 const PrimaryColor = "#309582";
 
+
 function LevelScreen() {
 
   const navigation = useNavigation<IntroScreenNavigatorProp>();
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 32,
-    backgroundColor : 'white'
+    backgroundColor: "white"
 
   },
   titleViewStyle: {
@@ -150,6 +151,7 @@ const styles = StyleSheet.create({
   imgView: {
     alignItems: "center",
     marginBottom: 24
-  }
+  },
+
 });
 export default LevelScreen;
