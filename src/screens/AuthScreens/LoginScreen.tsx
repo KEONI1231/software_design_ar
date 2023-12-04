@@ -1,10 +1,20 @@
-import React, { useCallback, useRef, useState } from "react";
-import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+  ActivityIndicator,
+  Animated,
+  Dimensions,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from "react-native";
 import Image = Animated.Image;
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Components/navigators/types";
+import ProfileModal from "../../Components/Modal/SendAnsModal";
 
 const PrimaryColor = "#309582";
 const SemiBlack = "#262626";
@@ -22,6 +32,15 @@ function LoginScreen() {
   }, []);
   const idRef = useRef<TextInput | null>(null);
   const pwRef = useRef<TextInput | null>(null);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+
+
   return (
     <View style={styles.safeAreaStyle}>
       <View style={styles.TextImageRowView}>
@@ -53,9 +72,9 @@ function LoginScreen() {
           onChangeText={onChangeId}
           ///onSubmitEditing={}
           ref={idRef}
-          onSubmitEditing={() => {
-            pwRef.current?.focus();
-          }}
+          // onSubmitEditing={() => {
+          //   pwRef.current?.focus();
+          // }}
           returnKeyType="send"></TextInput>
         <TextInput
           style={styles.loginTextInputStyle}
@@ -66,10 +85,8 @@ function LoginScreen() {
           secureTextEntry
           onChangeText={onChangePw}
           ///onSubmitEditing={}
-          ref={pwRef}
-          onSubmitEditing={() => {
-            pwRef.current?.focus();
-          }}
+          // ref={pwRef}
+
           returnKeyType="send"></TextInput>
       </View>
       <View style={styles.helpViewStyle}>
@@ -89,9 +106,14 @@ function LoginScreen() {
       <TouchableOpacity
         style={styles.btnStyle}
         activeOpacity={0.8}
-        onPress={() => navigation.navigate("MainScreen")}>
+        onPress={() => {
+
+
+          toggleModal()
+        }}>
         <Text style={styles.btnTextStyle}>로그인</Text>
       </TouchableOpacity>
+      <ProfileModal isModalVisible={isModalVisible} toggleModal={toggleModal} />
     </View>
   );
 }
@@ -99,7 +121,7 @@ function LoginScreen() {
 const styles = StyleSheet.create({
   safeAreaStyle: {
     flex: 1,
-    backgroundColor : 'white'
+    backgroundColor: "white"
   },
   TextImageRowView: {
     justifyContent: "space-between",

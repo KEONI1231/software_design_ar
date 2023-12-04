@@ -44,7 +44,7 @@ function MyPageScreen() {
           </View>
           <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
             <View style={styles.cotainerInnerView}>
-              <Text style={styles.tierTextStyle}>실버</Text>
+              <Text style={styles.tierTextStyle}>골드</Text>
               <Image
                 style={styles.imgStyle}
                 source={require("../../../assets/GoldIcon.png")}

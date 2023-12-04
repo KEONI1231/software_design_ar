@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   Text,
@@ -7,9 +7,12 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView, ActivityIndicator
 } from "react-native";
 import Modal from "react-native-modal/dist/modal";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../navigators/types";
+import { useNavigation } from "@react-navigation/native";
 
 interface ProfileModalProps {
   isModalVisible: boolean;
@@ -17,73 +20,57 @@ interface ProfileModalProps {
 }
 
 const PrimaryColor = "#fff6db";
+type RootStackNavigatorProp = StackNavigationProp<RootStackParamList>;
 
 const ProfileModal: React.FC<ProfileModalProps> = ({
                                                      isModalVisible,
                                                      toggleModal
                                                    }) => {
+  const navigation = useNavigation<RootStackNavigatorProp>();
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (isModalVisible) {
+      timer = setTimeout(() => {
+        toggleModal()
+        navigation.navigate("MainScreen");
+      }, 2000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [isModalVisible, navigation]);
+
+  // 로딩 인디케이터 표시
 
   return (
     <Modal
       isVisible={isModalVisible}
       style={{ margin: 0 }}
       backdropOpacity={0.5}
-      onBackdropPress={toggleModal}>
+    >
       <View style={styles.defaultViewStyle}>
         <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 16 }}>
-          프로필
+          로그인 중
         </Text>
-        <View>
-          <Image
-            style={styles.imageStyle}
-            source={require("../images/myprofileimg.jpg")}
-          />
-        </View>
-        <View
-          style={{
-            flex: 1, // This allows the view to take up all available space after the image
-            width: "100%" // Ensures the View takes up the full width of the parent View
-          }}>
-
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: PrimaryColor
-            }}>
-            <ScrollView
-              contentContainerStyle={{
-                flexGrow: 1
-              }}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  ...styles.statusMessageStyle
-                }}>
-                소켓 통신 라이브러리 사용 및 적용을 위한 앱 대충 만들어보기
-              </Text>
-            </ScrollView>
-          </View>
-        </View>
-
-        <View style={styles.bottomViewStyle}>
-          <Pressable style={{ marginTop: 15 }} onPress={toggleModal}>
-            <Text style={styles.closeBtnStyle}>확인</Text>
-          </Pressable>
-        </View>
+        <ActivityIndicator style={{ marginTop: 32 }} size="large" />
       </View>
     </Modal>
   );
+
+
 };
 
 const styles = StyleSheet.create({
   defaultViewStyle: {
     width: "80%",
-    height: "70%",
-    backgroundColor: PrimaryColor,
+    height: "20%",
+    backgroundColor: "white",
     padding: 20,
-    alignItems: "center",
+    //alignItems: "center",
     alignSelf: "center",
-    zIndex : 10
+    zIndex: 10,
+    justifyContent: "flex-start"
   },
 
   imageStyle: {
