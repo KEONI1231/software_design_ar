@@ -139,7 +139,7 @@ function RangkingCard() {
     }}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text style={{ marginRight: 8, fontSize: 20, marginLeft: 14, color: PrimaryColor }}>190</Text>
-        <Text style={styles.rankCardTextStyle}>로블록스 존잼님</Text>
+        <Text style={styles.rankCardTextStyle}>로블록스 꿀잼님</Text>
       </View>
       <Text style={{ ...styles.rankCardTextStyle, marginRight: 6 }}>572점</Text>
 
@@ -184,7 +184,7 @@ function MainScreen() {
             source={require("../../../assets/GoldMedal.png")}
           />
           <View style={styles.titleInnerViewStyle}>
-            <Text style={{...styles.titleTextStyle, marginLeft :0}}>로블록스 존잼님</Text>
+            <Text style={{...styles.titleTextStyle, marginLeft :0}}>로블록스 꿀잼님</Text>
             <Text style={styles.subTitleTextStyle}>골드</Text>
           </View>
         </View>
@@ -211,7 +211,7 @@ function MainScreen() {
         <FailProblem3></FailProblem3>
 
         <View style={styles.titleViewStyle}>
-          <Text style={styles.titleTextStyle}>로블록스 존잼님</Text>
+          <Text style={styles.titleTextStyle}>로블록스 꿀잼님</Text>
         </View>
 
         <View style={styles.containerViewStyle}>

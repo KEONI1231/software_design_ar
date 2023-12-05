@@ -24,7 +24,7 @@ function MyPageScreen() {
             source={require("../../../assets/GoldMedal.png")}
           />
           <View style={styles.titleInnerViewStyle}>
-            <Text style={styles.titleTextStyle}>로블록스 존잼님</Text>
+            <Text style={styles.titleTextStyle}>로블록스 꿀잼님</Text>
             <Text style={styles.subTitleTextStyle}>골드</Text>
           </View>
         </View>

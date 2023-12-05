@@ -177,7 +177,7 @@ function RankingScreen() {
 
   ];
   const myRank = [
-    { Name: "로블록스 존잼", Score: 572, rank: 190 }
+    { Name: "로블록스 꿀잼", Score: 572, rank: 190 }
 
   ];
   return (

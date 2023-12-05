@@ -49,7 +49,7 @@ function LevelScreen() {
       <View style={styles.safeAreaStyle}>
         <View style={styles.titleViewStyle}>
           <Text style={styles.titleTextStyle}>
-            로블록스 존잼님
+            로블록스 꿀잼님
           </Text>
         </View>
 
